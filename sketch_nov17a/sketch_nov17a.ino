@@ -35,16 +35,17 @@ void loop() {
       break;
 
     case RUNNING:
-      // -----------------------
-      //  Code principal ici
-      // -----------------------
-      // Exemple minimal: envoi périodique sans delay bloquant
-      static unsigned long last_send = 0;
-      if (millis() - last_send >= 200) {
-        last_send = millis();
-        Serial.println("Mesure fictive : 123");
-      }
-      break;
+       static unsigned long last_send = 0;
+        if (millis() - last_send >= 200) {
+          last_send = millis();
+
+          unsigned long temps_us = micros(); // compteur µs
+          Serial.print("Temps écoulé (µs) : ");
+          Serial.println(temps_us);
+
+          Serial.println("Mesure fictive : 123");
+  }
+  break;
 
     case RESET_PENDING:
       // Compte à rebours jusqu'au reset logiciel
